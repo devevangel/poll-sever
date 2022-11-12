@@ -5,7 +5,7 @@ const app = require("./app");
 
 mongoose
   .connect(
-    "mongodb+srv://evangel:polls@polls.dhrsx5i.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://evangel:polls@polls.dhrsx5i.mongodb.net/polls?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
     }

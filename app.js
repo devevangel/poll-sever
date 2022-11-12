@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // 3) ROUTES
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/polls", voteRouter);
+app.use("/users", userRouter);
+app.use("/polls", voteRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
