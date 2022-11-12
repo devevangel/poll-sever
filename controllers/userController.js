@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 // Creating api token
 const signToken = (id) => {
-  return jwt.sign({ id: id }, process.env.JWT_SECRET);
+  return jwt.sign({ id: id }, "polls-super-secure-secret");
 };
 
 // Sign up
@@ -73,7 +73,7 @@ exports.protect = async (req, res, next) => {
   // 2) Validate token
   const decodedPayLoad = await util.promisify(jwt.verify)(
     token,
-    process.env.JWT_SECRET
+    "polls-super-secure-secret"
   );
 
   // 3) Check if user still exists

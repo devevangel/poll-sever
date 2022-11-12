@@ -4,9 +4,12 @@ const mongoose = require("mongoose");
 const app = require("./app");
 
 mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-  })
+  .connect(
+    "mongodb+srv://evangel:polls@polls.dhrsx5i.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+    }
+  )
   .then(() => {
     console.log("DB connection successful");
   });
