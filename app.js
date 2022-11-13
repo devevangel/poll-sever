@@ -15,7 +15,7 @@ const app = express();
 // 1) MIDDLEWARES
 app.use(
   cors({
-    origin: "https://poll-project-two.vercel.app/",
+    origin: "*",
   })
 );
 app.use(express.json());
