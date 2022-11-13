@@ -4,8 +4,8 @@ const User = require("../models/userModel");
 // vote a
 exports.vote = async (req, res) => {
   // Check if user has voted before
-  const user = await User.findById(req.body.userId);
-  if (user) {
+  const userVote = await Vote.findOne({ userId: req.body.userId });
+  if (userVote) {
     return res.status(400).json({
       status: "fail",
       message: "This user seems to have voted already",
@@ -14,9 +14,20 @@ exports.vote = async (req, res) => {
 
   const newVote = await Vote.create(req.body);
 
+  const optionsOneCount = await Vote.find({ candidateId: "opt_1" }).count();
+  const optionsTwoCount = await Vote.find({ candidateId: "opt_2" }).count();
+  const optionsThreeCount = await Vote.find({ candidateId: "opt_3" }).count();
+  const optionsFourCount = await Vote.find({ candidateId: "opt_4" }).count();
+  const totalCount = await Vote.find().count();
+
   res.status(201).json({
     status: "success",
     vote: newVote,
+    opt_1: optionsOneCount,
+    opt_2: optionsTwoCount,
+    opt_3: optionsThreeCount,
+    opt_4: optionsFourCount,
+    total: totalCount,
   });
 };
 
