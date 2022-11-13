@@ -13,7 +13,11 @@ const voteRouter = require("./routes/voteRoute");
 const app = express();
 
 // 1) MIDDLEWARES
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 app.use(compression());
 if (process.env.NODE_ENV === "development") {
